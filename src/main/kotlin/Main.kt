@@ -38,4 +38,37 @@ fun main(args: Array<String>) {
     println(aString.isNotEmpty())
     println(aString.isNotBlank())
     println(aString.contains("Kotlin"))
+    // Functions
+    printGreeting()
+    printGreeting("Hey")
+    printGreeting(thingToGreet = "Kotlin")
+    printGreeting(greeting = "Hey", thingToGreet = "Kotlin")
+    println(getGreeting())
+    // Function types
+    println("Function types:")
+    greetingFun1()
+    println(greetingFun2("Kotlin"))
+    greetingFun2 = { thingToGreet->
+        "Hello $thingToGreet!"
+    }
+    println(greetingFun2("Kotlin"))
+    // Higher-order functions
+    println("Higher-order functions:")
+    printCalculatedValue(2,2) { a, b -> a + b }
+    printCalculatedValue(2,2) { a, b -> a - b }
+}
+fun printCalculatedValue(value1: Int, value2: Int, operation: (Int, Int) -> Int){
+    println("The result of the operation is ${operation(value1, value2)}")
+}
+var greetingFun1: () -> Unit= {
+    println("Hello Kotlin")
+}
+var greetingFun2: (String) -> String={ thingToGreet->
+    "Hello $thingToGreet"
+}
+fun printGreeting(greeting: String = "Hello", thingToGreet: String = "Kotlin"){
+    println("$greeting $thingToGreet!")
+}
+fun getGreeting(greeting: String = "Hello", thingToGreet: String = "Kotlin"):String{
+    return "$greeting $thingToGreet!"
 }
