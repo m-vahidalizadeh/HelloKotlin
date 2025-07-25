@@ -56,6 +56,17 @@ fun main(args: Array<String>) {
     println("Higher-order functions:")
     printCalculatedValue(2,2) { a, b -> a + b }
     printCalculatedValue(2,2) { a, b -> a - b }
+    // Challenge section 3
+    println("Challenge section 3:")
+    printFullName("Mohammad", "Vahid Alizadeh"){a,b -> "$a $b"}
+    printFullName("Mohammad", "Vahid Alizadeh"){a,b -> "$a, $b"}
+    printFullName("Mohammad", "Vahid Alizadeh"){a,b -> fancyFormat(a, b)}
+}
+fun fancyFormat(firstName: String, lastName: String): String{
+    return "The first name is $firstName and the last name is $lastName."
+}
+fun printFullName(firstName: String, lastName: String, format: (String, String)->String){
+    println(format(firstName, lastName))
 }
 fun printCalculatedValue(value1: Int, value2: Int, operation: (Int, Int) -> Int){
     println("The result of the operation is ${operation(value1, value2)}")
